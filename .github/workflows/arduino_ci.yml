@@ -1,0 +1,40 @@
+name: Arduino CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Install Arduino CLI
+        uses: arduino/setup-arduino-cli@v1
+
+      - name: Install Python serial library
+        run: python3 -m pip install pyserial
+
+      - name: Arduino CLI Core Index Update
+        run: |
+          arduino-cli config init
+          arduino-cli core update-index
+
+      - name: Arduino ESP32 Platform Installation
+        run: arduino-cli core install esp32:esp32@2.0.15
+
+      - name: Download Arduino Dependencies
+        run: git clone https://github.com/adafruit/Adafruit_SSD1306
+
+      - name: Build Arduino library on ESP32
+        run: |
+          arduino-cli compile --fqbn esp32:esp32:esp32wrover --library Adafruit_SSD1306 --library src --build-path build examples/ssd1306_example/ssd1306_example.ino
