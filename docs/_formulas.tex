@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage{ifthen}
+\usepackage{epsfig}
+\usepackage[utf8]{inputenc}
+\usepackage{newunicodechar}
+  \newunicodechar{⁻}{${}^{-}$}% Superscript minus
+  \newunicodechar{²}{${}^{2}$}% Superscript two
+  \newunicodechar{³}{${}^{3}$}% Superscript three
+
+\pagestyle{empty}
+\begin{document}
+$
+R_x(\theta) = \begin{pmatrix}
+1 & 0 & 0 \\
+0 & \cos\theta & -\sin\theta \\
+0 & \sin\theta & \cos\theta
+\end{pmatrix}
+$
+\pagebreak
+
+\[
+R_y(\theta) = \begin{pmatrix}
+\cos\theta & 0 & \sin\theta \\
+0 & 1 & 0 \\
+-\sin\theta & 0 & \cos\theta
+\end{pmatrix}
+\]
+\pagebreak
+
+\[
+R_z(\theta) = \begin{pmatrix}
+\cos\theta & -\sin\theta & 0 \\
+\sin\theta & \cos\theta & 0 \\
+0 & 0 & 1
+\end{pmatrix}
+\]
+\pagebreak
+
+$(x, y, z)$
+\pagebreak
+
+\[
+\begin{pmatrix}
+x' \\
+y' \\
+z'
+\end{pmatrix}
+= R_z(\theta_z) \times R_y(\theta_y) \times R_x(\theta_x) \times \begin{pmatrix}
+x \\
+y \\
+z
+\end{pmatrix}
+\]
+\pagebreak
+
+\[
+x_{\text{proj}} = \frac{x'}{z'} \times \text{scale\_size} + \text{x\_offset}
+\]
+\pagebreak
+
+\[
+y_{\text{proj}} = \frac{y'}{z'} \times \text{scale\_size} + \text{y\_offset}
+\]
+\pagebreak
+
+\end{document}
