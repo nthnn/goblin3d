@@ -4,6 +4,7 @@
 
 ![Arduino CI](https://github.com/nthnn/goblin3d/actions/workflows/arduino_ci.yml/badge.svg)
 ![Arduino Lint](https://github.com/nthnn/goblin3d/actions/workflows/arduino_lint.yml/badge.svg)
+![SDL2 Port CI](https://github.com/nthnn/goblin3d/actions/workflows/sdl2_ci.yml/badge.svg)
 ![Arduino Release](https://img.shields.io/badge/Library%20Manager-v0.0.1-red?logo=Arduino)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/nthnn/goblin3d/blob/main/LICENSE)
 
@@ -16,6 +17,12 @@
 - **No External Dependencies**: Goblin3D is a standalone library that does not require any additional libraries, making it easy to integrate into any Arduino project.
 - **Customizable Objects**: Easily define and manipulate custom 3D objects with your own vertices and edges.
 - **Rotation and Scaling**: Support for rotating and scaling objects in 3D space.
+
+<p align="center">
+    <img src="assets/goblin3d_sdl2.png" alt="Goblin3D port with SDL2"/>
+    <br/>
+    Goblin3D port with SDL2
+</p>
 
 ## Installation
 
