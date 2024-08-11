@@ -29,13 +29,13 @@ var NAVTREE =
       [ "Features", "index.html#autotoc_md0", null ],
       [ "Installation", "index.html#autotoc_md1", [
         [ "Arduino Library Manager", "index.html#autotoc_md2", null ],
-        [ "Manual Installation", "index.html#autotoc_md3", null ]
+        [ "Manual Installation", "index.html#autotoc_md4", null ]
       ] ],
-      [ "Getting Started", "index.html#autotoc_md4", [
-        [ "Basic Usage", "index.html#autotoc_md5", null ]
+      [ "Getting Started", "index.html#autotoc_md5", [
+        [ "Basic Usage", "index.html#autotoc_md6", null ]
       ] ],
-      [ "Contribution and Feedback", "index.html#autotoc_md6", null ],
-      [ "License", "index.html#autotoc_md7", null ],
+      [ "Contribution and Feedback", "index.html#autotoc_md7", null ],
+      [ "License", "index.html#autotoc_md8", null ],
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
       [ "Class Members", "functions.html", [
