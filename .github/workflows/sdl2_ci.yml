@@ -1,0 +1,26 @@
+name: SDL2 Port CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install SDL2
+        run: |
+          sudo apt update
+          sudo apt install build-essential libsdl2-dev
+
+      - name: Build SDL2 port
+        run: |
+          cd examples/sdl2
+          chmod +x build.sh
+          ./build.sh
+          ls ../../dist
