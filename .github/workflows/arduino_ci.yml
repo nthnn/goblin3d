@@ -39,4 +39,4 @@ jobs:
 
       - name: Build Arduino library on ESP32
         run: |
-          arduino-cli compile --fqbn esp32:esp32:esp32wrover --library Adafruit_SSD1306 --library Adafruit_GFX --library src --build-path build examples/ssd1306_example/ssd1306_example.ino
+          arduino-cli compile --fqbn esp32:esp32:esp32wrover --library Adafruit_SSD1306 --library Adafruit-GFX-Library --library src --build-path build examples/ssd1306_example/ssd1306_example.ino
