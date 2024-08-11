@@ -33,7 +33,9 @@ jobs:
         run: arduino-cli core install esp32:esp32@2.0.15
 
       - name: Download Arduino Dependencies
-        run: git clone https://github.com/adafruit/Adafruit_SSD1306
+        run: |
+          git clone --depth 1 https://github.com/adafruit/Adafruit_SSD1306
+          git clone --depth 1 https://github.com/adafruit/Adafruit-GFX-Library
 
       - name: Build Arduino library on ESP32
         run: |
