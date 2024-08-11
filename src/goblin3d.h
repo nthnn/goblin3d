@@ -182,11 +182,11 @@ void goblin3d_free(goblin3d_obj_t* obj);
  * formula:
  * 
  * \f[
- * x_{\text{proj}} = \frac{x'}{z'} \times \text{scale\_size} + \text{x\_offset}
+ * x_{\text{proj}} = \frac{x'}{z'} \times scale_\text{size} + x_\text{offset}
  * \f]
  * 
  * \f[
- * y_{\text{proj}} = \frac{y'}{z'} \times \text{scale\_size} + \text{y\_offset}
+ * y_{\text{proj}} = \frac{y'}{z'} \times scale_\text{size} + y_\text{offset}
  * \f]
  * 
  * The z-coordinate is clamped to a minimum value to avoid division by zero or very small
