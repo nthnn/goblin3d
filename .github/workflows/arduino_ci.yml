@@ -37,7 +37,12 @@ jobs:
           git clone --depth 1 https://github.com/adafruit/Adafruit_SSD1306
           git clone --depth 1 https://github.com/adafruit/Adafruit-GFX-Library
           git clone --depth 1 https://github.com/adafruit/Adafruit_BusIO
+          git clone --depth 1 https://github.com/Bodmer/TFT_eSPI
 
-      - name: Build Arduino library on ESP32
+      - name: Build SSD1306 Example
         run: |
           arduino-cli compile --fqbn esp32:esp32:esp32wrover --library Adafruit_SSD1306 --library Adafruit-GFX-Library --library Adafruit_BusIO --library src --build-path build examples/ssd1306_example/ssd1306_example.ino
+
+      - name: Build TFT LCD Example
+        run: |
+          arduino-cli compile --fqbn esp32:esp32:esp32wrover --library TFT_eSPI --library src --build-path build examples/tft_example/tft_example.ino
