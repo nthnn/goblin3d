@@ -10,6 +10,12 @@
 
 **Goblin3D** is a lightweight, dependency-free graphics engine designed for rendering 3D wireframes on monochromatic displays and TFT LCDs using the Arduino platform. Goblin3D is perfect for embedded systems where resources are limited but 3D rendering capabilities are desired.
 
+<p align="center">
+    <img src="assets/goblin3d_demo.jpg" width="480" alt="Goblin3D demo"/>
+    <br/>
+    Goblin3D demo with ESP32 on TFT and OLED.
+</p>
+
 ## Features
 
 - **3D Wireframe Rendering**: Render basic 3D shapes as wireframes on displays.
