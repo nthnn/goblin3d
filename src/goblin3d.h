@@ -115,6 +115,18 @@ typedef void (*goblin3d_obj_draw_fn)(uint16_t x1, uint16_t y1, uint16_t x2, uint
 bool goblin3d_init(goblin3d_obj_t* obj, uint32_t point_count, uint32_t edge_count);
 
 /**
+ * @brief Initializes an empty Goblin3D object.
+ * 
+ * This function sets up an empty Goblin3D object by initializing its point and
+ * edge counts to zero and setting all point and edge pointers to `NULL`. This 
+ * function is useful for setting up a new object before adding points and edges 
+ * to it.
+ * 
+ * @param obj A pointer to the Goblin3D object to initialize.
+ */
+void goblin3d_init_empty(goblin3d_obj_t* obj);
+
+/**
  * @brief Frees the memory associated with a 3D object structure.
  * 
  * This function deallocates the memory used for storing the points, edges, and other
@@ -207,5 +219,67 @@ void goblin3d_precalculate(goblin3d_obj_t* obj);
  * @param draw A callback function used to draw lines between the points on the 2D plane.
  */
 void goblin3d_render(goblin3d_obj_t* obj, goblin3d_obj_draw_fn draw);
+
+/**
+ * @brief Adds a 3D point to a Goblin3D object.
+ * 
+ * This function adds a new 3D point to the Goblin3D object by reallocating memory 
+ * for the points and storing the coordinates. The new point is added to both the 
+ * original and rotated points arrays.
+ * 
+ * @param obj A pointer to the Goblin3D object.
+ * @param x The x-coordinate of the point.
+ * @param y The y-coordinate of the point.
+ * @param z The z-coordinate of the point.
+ * @return `true` if the point was added successfully, `false` if a memory allocation
+ *         error occurred.
+ */
+bool goblin3d_add_point(goblin3d_obj_t* obj, float x, float y, float z);
+
+/**
+ * @brief Checks if an edge exists between two vertices in a Goblin3D object.
+ * 
+ * This function checks whether an edge exists between two specified vertices 
+ * (identified by their indices) in the Goblin3D object's edges array. An edge 
+ * is considered to exist if there is an edge in the array that connects the 
+ * two vertices in either order.
+ * 
+ * @param obj A pointer to the Goblin3D object.
+ * @param v1 The index of the first vertex.
+ * @param v2 The index of the second vertex.
+ * @return `true` if the edge exists, `false` otherwise.
+ */
+bool goblin3d_edge_exists(goblin3d_obj_t* obj, uint32_t v1, uint32_t v2);
+
+/**
+ * @brief Adds an edge between two vertices in a Goblin3D object.
+ * 
+ * This function adds a new edge between two vertices (identified by their indices)
+ * in the Goblin3D object. If the edge already exists, the function returns `true` 
+ * without adding a duplicate edge. If the edge does not exist, it is added to the 
+ * edges array.
+ * 
+ * @param obj A pointer to the Goblin3D object.
+ * @param v1 The index of the first vertex.
+ * @param v2 The index of the second vertex.
+ * @return `true` if the edge was added successfully, `false` if a memory allocation 
+ *         error occurred.
+ */
+bool goblin3d_add_edge(goblin3d_obj_t* obj, uint32_t v1, uint32_t v2);
+
+/**
+ * @brief Parses an OBJ file to construct a Goblin3D object.
+ * 
+ * This function reads a Wavefront OBJ file and constructs a Goblin3D object from it.
+ * The function initializes the object, reads vertices and faces from the file, and 
+ * adds the corresponding points and edges to the Goblin3D object. The OBJ file should 
+ * be formatted according to the standard OBJ file format specification.
+ * 
+ * @param filename The path to the OBJ file to parse.
+ * @param obj A pointer to the Goblin3D object to populate.
+ * @return `true` if the OBJ file was successfully parsed and the object constructed, 
+ *         `false` if an error occurred (e.g., file not found, memory allocation failure).
+ */
+bool goblin3d_parse_obj_file(const char* filename, goblin3d_obj_t* obj);
 
 #endif /* GOBLIN3D_H */
