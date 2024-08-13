@@ -71,7 +71,7 @@
  */
 typedef struct {
     float** points;          /**< 2D array storing the projected 2D coordinates of each point after transformations. */
-    uint8_t** edges;         /**< 2D array storing pairs of indices that represent the edges connecting the points. */
+    uint32_t** edges;         /**< 2D array storing pairs of indices that represent the edges connecting the points. */
     float** orig_points;     /**< 2D array storing the original 3D coordinates of each point before any transformations. */
     float** rotated_points;  /**< 2D array storing the 3D coordinates of each point after rotation but before projection. */
 
@@ -82,8 +82,8 @@ typedef struct {
     float y_angle_deg;       /**< Rotation angle around the Y-axis, in degrees. */
     float z_angle_deg;       /**< Rotation angle around the Z-axis, in degrees. */
 
-    uint8_t point_count;     /**< The number of points (vertices) in the 3D object. */
-    uint8_t edge_count;      /**< The number of edges connecting the points in the 3D object. */
+    uint32_t point_count;     /**< The number of points (vertices) in the 3D object. */
+    uint32_t edge_count;      /**< The number of edges connecting the points in the 3D object. */
     float scale_size;        /**< Scaling factor applied to the projected points. */
 } goblin3d_obj_t;
 
@@ -112,7 +112,7 @@ typedef void (*goblin3d_obj_draw_fn)(uint16_t x1, uint16_t y1, uint16_t x2, uint
  * @param edge_count The number of edges connecting the points in the 3D object.
  * @return `true` if initialization is successful, `false` otherwise.
  */
-bool goblin3d_init(goblin3d_obj_t* obj, uint8_t point_count, uint8_t edge_count);
+bool goblin3d_init(goblin3d_obj_t* obj, uint32_t point_count, uint32_t edge_count);
 
 /**
  * @brief Frees the memory associated with a 3D object structure.

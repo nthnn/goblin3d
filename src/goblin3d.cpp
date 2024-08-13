@@ -24,7 +24,7 @@
 #include <goblin3d.h>
 #include <math.h>
 
-bool goblin3d_init(goblin3d_obj_t* obj, uint8_t point_count, uint8_t edge_count) {
+bool goblin3d_init(goblin3d_obj_t* obj, uint32_t point_count, uint32_t edge_count) {
     size_t fsize = sizeof(float);
     size_t fpsize = sizeof(float*);
 
@@ -37,7 +37,7 @@ bool goblin3d_init(goblin3d_obj_t* obj, uint8_t point_count, uint8_t edge_count)
         return false;
     }
 
-    obj->edges = (uint8_t**) malloc(sizeof(uint8_t**) * edge_count);
+    obj->edges = (uint32_t**) malloc(sizeof(uint32_t**) * edge_count);
     if(!obj->edges) {
         goblin3d_free(obj);
         return false;
@@ -55,7 +55,7 @@ bool goblin3d_init(goblin3d_obj_t* obj, uint8_t point_count, uint8_t edge_count)
         return false;
     }
 
-    for(uint8_t i = 0; i < point_count; i++) {
+    for(uint32_t i = 0; i < point_count; i++) {
         obj->points[i] = (float*) malloc(fsize * 2);
         if(!obj->points[i]) {
             goblin3d_free(obj);
@@ -75,8 +75,8 @@ bool goblin3d_init(goblin3d_obj_t* obj, uint8_t point_count, uint8_t edge_count)
         }
     }
 
-    for(uint8_t i = 0; i < edge_count; i++) {
-        obj->edges[i] = (uint8_t*) malloc(sizeof(uint8_t) * 2);
+    for(uint32_t i = 0; i < edge_count; i++) {
+        obj->edges[i] = (uint32_t*) malloc(sizeof(uint32_t) * 2);
         if(!obj->edges[i]) {
             goblin3d_free(obj);
             return false;
@@ -95,7 +95,7 @@ bool goblin3d_init(goblin3d_obj_t* obj, uint8_t point_count, uint8_t edge_count)
 }
 
 void goblin3d_free(goblin3d_obj_t* obj) {
-    for(uint8_t i = 0; i < obj->point_count; i++) {
+    for(uint32_t i = 0; i < obj->point_count; i++) {
         if(obj->points[i])
             free(obj->points[i]);
 
@@ -106,7 +106,7 @@ void goblin3d_free(goblin3d_obj_t* obj) {
             free(obj->rotated_points[i]);
     }
 
-    for(uint8_t i = 0; i < obj->edge_count; i++)
+    for(uint32_t i = 0; i < obj->edge_count; i++)
         if(obj->edges[i])
             free(obj->edges[i]);
 
@@ -136,7 +136,7 @@ void goblin3d_precalculate(goblin3d_obj_t* obj) {
     float sinY = sin(radY);
     float sinZ = sin(radZ);
 
-    for(uint8_t i=0; i<obj->point_count; i++) {
+    for(uint32_t i=0; i<obj->point_count; i++) {
         float x = obj->orig_points[i][0];
         float y = obj->orig_points[i][1];
         float z = obj->orig_points[i][2];
@@ -164,8 +164,8 @@ void goblin3d_precalculate(goblin3d_obj_t* obj) {
 }
 
 void goblin3d_render(goblin3d_obj_t* obj, goblin3d_obj_draw_fn draw) {
-    for(uint8_t i = 0; i < obj->edge_count; i++) {
-        uint8_t start = obj->edges[i][0], end = obj->edges[i][1];
+    for(uint32_t i = 0; i < obj->edge_count; i++) {
+        uint32_t start = obj->edges[i][0], end = obj->edges[i][1];
         draw(
             obj->points[start][0],
             obj->points[start][1],
