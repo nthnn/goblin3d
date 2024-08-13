@@ -52,7 +52,7 @@ void setup() {
     };
 
     // Define the edges of the cube, connecting pairs of vertices
-    uint8_t cube_edges[16][2] = {
+    uint32_t cube_edges[16][2] = {
         {0, 1}, {1, 2}, {2, 3}, {3, 0},  // Base edges
         {4, 5}, {5, 6}, {6, 7}, {7, 4},  // Top edges
         {0, 4}, {1, 5}, {2, 6}, {3, 7},  // Vertical edges
@@ -76,13 +76,13 @@ void setup() {
     cube.y_offset = 32;
 
     // Copy the predefined cube points to the Goblin3D object's original points array
-    for(uint8_t i = 0; i < 9; i++)
-        for(uint8_t j = 0; j < 3; j++)
+    for(uint32_t i = 0; i < 9; i++)
+        for(uint32_t j = 0; j < 3; j++)
             cube.orig_points[i][j] = cube_points[i][j];
 
     // Copy the predefined cube edges to the Goblin3D object's edges array
-    for(uint8_t i = 0; i < 16; i++)
-        for(uint8_t j = 0; j < 2; j++)
+    for(uint32_t i = 0; i < 16; i++)
+        for(uint32_t j = 0; j < 2; j++)
             cube.edges[i][j] = cube_edges[i][j];
 
     // Initialize the OLED display with I2C address 0x3C
