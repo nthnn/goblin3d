@@ -130,6 +130,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ae24db99a854272ed44f23fa50bbc5fda"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="goblin3d_8h.html#ae24db99a854272ed44f23fa50bbc5fda">goblin3d_init</a> (<a class="el" href="structgoblin3d__obj__t.html">goblin3d_obj_t</a> *obj, uint32_t point_count, uint32_t edge_count)</td></tr>
 <tr class="memdesc:ae24db99a854272ed44f23fa50bbc5fda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a 3D object structure.  <br /></td></tr>
 <tr class="separator:ae24db99a854272ed44f23fa50bbc5fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca4a64f85efba7d06031e8bcafffcfab"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="goblin3d_8h.html#aca4a64f85efba7d06031e8bcafffcfab">goblin3d_init_empty</a> (<a class="el" href="structgoblin3d__obj__t.html">goblin3d_obj_t</a> *obj)</td></tr>
+<tr class="memdesc:aca4a64f85efba7d06031e8bcafffcfab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes an empty Goblin3D object.  <br /></td></tr>
+<tr class="separator:aca4a64f85efba7d06031e8bcafffcfab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01f95040820b0cec183741784c151a3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="goblin3d_8h.html#a01f95040820b0cec183741784c151a3d">goblin3d_free</a> (<a class="el" href="structgoblin3d__obj__t.html">goblin3d_obj_t</a> *obj)</td></tr>
 <tr class="memdesc:a01f95040820b0cec183741784c151a3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the memory associated with a 3D object structure.  <br /></td></tr>
 <tr class="separator:a01f95040820b0cec183741784c151a3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -139,6 +142,18 @@ Functions</h2></td></tr>
 <tr class="memitem:adef913d7db7d1970e0595d05c10419a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="goblin3d_8h.html#adef913d7db7d1970e0595d05c10419a4">goblin3d_render</a> (<a class="el" href="structgoblin3d__obj__t.html">goblin3d_obj_t</a> *obj, <a class="el" href="goblin3d_8h.html#ab72c35f4cc3aea8b4296e01774227c3e">goblin3d_obj_draw_fn</a> draw)</td></tr>
 <tr class="memdesc:adef913d7db7d1970e0595d05c10419a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the 3D object by drawing its edges on a 2D plane.  <br /></td></tr>
 <tr class="separator:adef913d7db7d1970e0595d05c10419a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5858001bf264b0da91b50c86020c7a9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="goblin3d_8h.html#af5858001bf264b0da91b50c86020c7a9">goblin3d_add_point</a> (<a class="el" href="structgoblin3d__obj__t.html">goblin3d_obj_t</a> *obj, float x, float y, float z)</td></tr>
+<tr class="memdesc:af5858001bf264b0da91b50c86020c7a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a 3D point to a Goblin3D object.  <br /></td></tr>
+<tr class="separator:af5858001bf264b0da91b50c86020c7a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73e02d0670074e2f429284e8b90f82ea"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="goblin3d_8h.html#a73e02d0670074e2f429284e8b90f82ea">goblin3d_edge_exists</a> (<a class="el" href="structgoblin3d__obj__t.html">goblin3d_obj_t</a> *obj, uint32_t v1, uint32_t v2)</td></tr>
+<tr class="memdesc:a73e02d0670074e2f429284e8b90f82ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if an edge exists between two vertices in a Goblin3D object.  <br /></td></tr>
+<tr class="separator:a73e02d0670074e2f429284e8b90f82ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff1873324d513c1661b6238fffc44646"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="goblin3d_8h.html#aff1873324d513c1661b6238fffc44646">goblin3d_add_edge</a> (<a class="el" href="structgoblin3d__obj__t.html">goblin3d_obj_t</a> *obj, uint32_t v1, uint32_t v2)</td></tr>
+<tr class="memdesc:aff1873324d513c1661b6238fffc44646"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an edge between two vertices in a Goblin3D object.  <br /></td></tr>
+<tr class="separator:aff1873324d513c1661b6238fffc44646"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab400a01fd373abdf038d98d96d427c9b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="goblin3d_8h.html#ab400a01fd373abdf038d98d96d427c9b">goblin3d_parse_obj_file</a> (const char *filename, <a class="el" href="structgoblin3d__obj__t.html">goblin3d_obj_t</a> *obj)</td></tr>
+<tr class="memdesc:ab400a01fd373abdf038d98d96d427c9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parses an OBJ file to construct a Goblin3D object.  <br /></td></tr>
+<tr class="separator:ab400a01fd373abdf038d98d96d427c9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Header file for 3D object rendering using the Goblin3D library. </p>
@@ -190,6 +205,151 @@ Usage Example</h2>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="aff1873324d513c1661b6238fffc44646" name="aff1873324d513c1661b6238fffc44646"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff1873324d513c1661b6238fffc44646">&#9670;&#160;</a></span>goblin3d_add_edge()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool goblin3d_add_edge </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgoblin3d__obj__t.html">goblin3d_obj_t</a> *&#160;</td>
+          <td class="paramname"><em>obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>v1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>v2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds an edge between two vertices in a Goblin3D object. </p>
+<p>This function adds a new edge between two vertices (identified by their indices) in the Goblin3D object. If the edge already exists, the function returns <code>true</code> without adding a duplicate edge. If the edge does not exist, it is added to the edges array.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>A pointer to the Goblin3D object. </td></tr>
+    <tr><td class="paramname">v1</td><td>The index of the first vertex. </td></tr>
+    <tr><td class="paramname">v2</td><td>The index of the second vertex. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the edge was added successfully, <code>false</code> if a memory allocation error occurred. </dd></dl>
+
+</div>
+</div>
+<a id="af5858001bf264b0da91b50c86020c7a9" name="af5858001bf264b0da91b50c86020c7a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5858001bf264b0da91b50c86020c7a9">&#9670;&#160;</a></span>goblin3d_add_point()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool goblin3d_add_point </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgoblin3d__obj__t.html">goblin3d_obj_t</a> *&#160;</td>
+          <td class="paramname"><em>obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>z</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds a 3D point to a Goblin3D object. </p>
+<p>This function adds a new 3D point to the Goblin3D object by reallocating memory for the points and storing the coordinates. The new point is added to both the original and rotated points arrays.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>A pointer to the Goblin3D object. </td></tr>
+    <tr><td class="paramname">x</td><td>The x-coordinate of the point. </td></tr>
+    <tr><td class="paramname">y</td><td>The y-coordinate of the point. </td></tr>
+    <tr><td class="paramname">z</td><td>The z-coordinate of the point. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the point was added successfully, <code>false</code> if a memory allocation error occurred. </dd></dl>
+
+</div>
+</div>
+<a id="a73e02d0670074e2f429284e8b90f82ea" name="a73e02d0670074e2f429284e8b90f82ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a73e02d0670074e2f429284e8b90f82ea">&#9670;&#160;</a></span>goblin3d_edge_exists()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool goblin3d_edge_exists </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgoblin3d__obj__t.html">goblin3d_obj_t</a> *&#160;</td>
+          <td class="paramname"><em>obj</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>v1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>v2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if an edge exists between two vertices in a Goblin3D object. </p>
+<p>This function checks whether an edge exists between two specified vertices (identified by their indices) in the Goblin3D object's edges array. An edge is considered to exist if there is an edge in the array that connects the two vertices in either order.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>A pointer to the Goblin3D object. </td></tr>
+    <tr><td class="paramname">v1</td><td>The index of the first vertex. </td></tr>
+    <tr><td class="paramname">v2</td><td>The index of the second vertex. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the edge exists, <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
 <a id="a01f95040820b0cec183741784c151a3d" name="a01f95040820b0cec183741784c151a3d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a01f95040820b0cec183741784c151a3d">&#9670;&#160;</a></span>goblin3d_free()</h2>
 
@@ -260,6 +420,72 @@ Usage Example</h2>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> if initialization is successful, <code>false</code> otherwise. </dd></dl>
+
+</div>
+</div>
+<a id="aca4a64f85efba7d06031e8bcafffcfab" name="aca4a64f85efba7d06031e8bcafffcfab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca4a64f85efba7d06031e8bcafffcfab">&#9670;&#160;</a></span>goblin3d_init_empty()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void goblin3d_init_empty </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structgoblin3d__obj__t.html">goblin3d_obj_t</a> *&#160;</td>
+          <td class="paramname"><em>obj</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes an empty Goblin3D object. </p>
+<p>This function sets up an empty Goblin3D object by initializing its point and edge counts to zero and setting all point and edge pointers to <code>NULL</code>. This function is useful for setting up a new object before adding points and edges to it.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">obj</td><td>A pointer to the Goblin3D object to initialize. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ab400a01fd373abdf038d98d96d427c9b" name="ab400a01fd373abdf038d98d96d427c9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab400a01fd373abdf038d98d96d427c9b">&#9670;&#160;</a></span>goblin3d_parse_obj_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool goblin3d_parse_obj_file </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structgoblin3d__obj__t.html">goblin3d_obj_t</a> *&#160;</td>
+          <td class="paramname"><em>obj</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Parses an OBJ file to construct a Goblin3D object. </p>
+<p>This function reads a Wavefront OBJ file and constructs a Goblin3D object from it. The function initializes the object, reads vertices and faces from the file, and adds the corresponding points and edges to the Goblin3D object. The OBJ file should be formatted according to the standard OBJ file format specification.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>The path to the OBJ file to parse. </td></tr>
+    <tr><td class="paramname">obj</td><td>A pointer to the Goblin3D object to populate. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><code>true</code> if the OBJ file was successfully parsed and the object constructed, <code>false</code> if an error occurred (e.g., file not found, memory allocation failure). </dd></dl>
 
 </div>
 </div>
