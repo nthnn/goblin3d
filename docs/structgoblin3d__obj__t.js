@@ -1,9 +1,9 @@
 var structgoblin3d__obj__t =
 [
-    [ "edge_count", "structgoblin3d__obj__t.html#a8084373140b91ed5d56222501f6fc9bd", null ],
-    [ "edges", "structgoblin3d__obj__t.html#a8a289a9f43ef503c366710d5a6f51f5d", null ],
+    [ "edge_count", "structgoblin3d__obj__t.html#abc72ccdfe2974e9e1e0d9e422acc9e74", null ],
+    [ "edges", "structgoblin3d__obj__t.html#a717f26694df1ab89b4eb02c7f81b0703", null ],
     [ "orig_points", "structgoblin3d__obj__t.html#a1664e18deccebb74fe1aa9860e6f1027", null ],
-    [ "point_count", "structgoblin3d__obj__t.html#ab08da9768f153afb57a6f02bbf80976a", null ],
+    [ "point_count", "structgoblin3d__obj__t.html#a1205c0f08198faf9f32d705672442790", null ],
     [ "points", "structgoblin3d__obj__t.html#a6329b92af75212ed1d920d27e420226d", null ],
     [ "rotated_points", "structgoblin3d__obj__t.html#aa995e5640c9cdd0c4f6462e08b938b98", null ],
     [ "scale_size", "structgoblin3d__obj__t.html#a49b6917c23157f0fca2e8bb0e162f92c", null ],
