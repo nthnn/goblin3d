@@ -19,6 +19,9 @@
     Goblin3D demo with ESP32 on TFT and OLED.
 </p>
 
+> [!NOTE]
+> This library is also compatible with desktop environments.
+
 ## Features
 
 - **3D Wireframe Rendering**: Render basic 3D shapes as wireframes on displays.
