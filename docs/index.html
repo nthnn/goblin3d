@@ -97,14 +97,15 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="toc"><h3>Table of Contents</h3>
 <ul><ul><li class="level2"><a href="#autotoc_md0">Features</a></li>
 <li class="level2"><a href="#autotoc_md1">Installation</a><ul><li class="level3"><a href="#autotoc_md2">Arduino Library Manager</a></li>
-<li class="level3"><a href="#autotoc_md4">Manual Installation</a></li>
+<li class="level3"><a href="#autotoc_md3">Manual Installation</a></li>
 </ul>
 </li>
-<li class="level2"><a href="#autotoc_md5">Getting Started</a><ul><li class="level3"><a href="#autotoc_md6">Quick Start</a></li>
-<li class="level3"><a href="#autotoc_md7">Basic Usage</a></li>
+<li class="level2"><a href="#autotoc_md4">Getting Started</a><ul><li class="level3"><a href="#autotoc_md5">Quick Start</a></li>
+<li class="level3"><a href="#autotoc_md6">Basic Usage</a></li>
 </ul>
 </li>
-<li class="level2"><a href="#autotoc_md8">Exporting from Blender</a></li>
+<li class="level2"><a href="#autotoc_md7">Exporting from Blender</a></li>
+<li class="level2"><a href="#autotoc_md8">Use Cases</a></li>
 <li class="level2"><a href="#autotoc_md9">Contribution and Feedback</a></li>
 <li class="level2"><a href="#autotoc_md10">License</a></li>
 </ul>
@@ -140,7 +141,7 @@ Arduino Library Manager</h3>
 <li>Search for <b>Goblin3D</b>.</li>
 <li>Click <b>Install</b>.</li>
 </ol>
-<h3><a class="anchor" id="autotoc_md4"></a>
+<h3><a class="anchor" id="autotoc_md3"></a>
 Manual Installation</h3>
 <ol type="1">
 <li>Download the latest release from the <a href="https://github.com/nthnn/goblin3d/releases">Releases</a> page.</li>
@@ -148,14 +149,14 @@ Manual Installation</h3>
 <li>Move the <code>Goblin3D</code> folder to your Arduino libraries directory (typically <code>~/Documents/Arduino/libraries/</code> on Windows and Linux, <code>~/Documents/Arduino/libraries/</code> on macOS).</li>
 <li>Restart the Arduino IDE.</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md5"></a>
+<h2><a class="anchor" id="autotoc_md4"></a>
 Getting Started</h2>
-<h3><a class="anchor" id="autotoc_md6"></a>
+<h3><a class="anchor" id="autotoc_md5"></a>
 Quick Start</h3>
 <p >Goblin3D SDL2 port example is availble on Docker to try it out.</p>
 <div class="fragment"><div class="line">docker pull nthnn/goblin3d</div>
 <div class="line">docker run -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix goblin3d</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md7"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md6"></a>
 Basic Usage</h3>
 <p >Here’s a simple example of how to use Goblin3D to load an <code>*.obj</code> file from SD card to TFT ILI9341 display.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;SPI.h&gt;</span>                <span class="comment">// Include the SPI library for SPI communication</span></div>
@@ -227,7 +228,7 @@ Basic Usage</h3>
 <div class="line">}</div>
 <div class="ttc" id="agoblin3d_8h_html"><div class="ttname"><a href="goblin3d_8h.html">goblin3d.h</a></div><div class="ttdoc">Header file for 3D object rendering using the Goblin3D library.</div></div>
 <div class="ttc" id="agoblin3d_8h_html_a6c722e0a5bff6a8b059c2d2ea64ba2ab"><div class="ttname"><a href="goblin3d_8h.html#a6c722e0a5bff6a8b059c2d2ea64ba2ab">goblin3d_precalculate</a></div><div class="ttdeci">void goblin3d_precalculate(goblin3d_obj_t *obj)</div><div class="ttdoc">Precalculates the rotated and projected points for a 3D object.</div><div class="ttdef"><b>Definition:</b> goblin3d.cpp:145</div></div>
-<div class="ttc" id="agoblin3d_8h_html_ab400a01fd373abdf038d98d96d427c9b"><div class="ttname"><a href="goblin3d_8h.html#ab400a01fd373abdf038d98d96d427c9b">goblin3d_parse_obj_file</a></div><div class="ttdeci">bool goblin3d_parse_obj_file(const char *filename, goblin3d_obj_t *obj)</div><div class="ttdoc">Parses an OBJ file to construct a Goblin3D object.</div><div class="ttdef"><b>Definition:</b> goblin3d.cpp:259</div></div>
+<div class="ttc" id="agoblin3d_8h_html_ab400a01fd373abdf038d98d96d427c9b"><div class="ttname"><a href="goblin3d_8h.html#ab400a01fd373abdf038d98d96d427c9b">goblin3d_parse_obj_file</a></div><div class="ttdeci">bool goblin3d_parse_obj_file(const char *filename, goblin3d_obj_t *obj)</div><div class="ttdoc">Parses an OBJ file to construct a Goblin3D object.</div><div class="ttdef"><b>Definition:</b> goblin3d.cpp:261</div></div>
 <div class="ttc" id="agoblin3d_8h_html_adef913d7db7d1970e0595d05c10419a4"><div class="ttname"><a href="goblin3d_8h.html#adef913d7db7d1970e0595d05c10419a4">goblin3d_render</a></div><div class="ttdeci">void goblin3d_render(goblin3d_obj_t *obj, goblin3d_obj_draw_fn draw)</div><div class="ttdoc">Renders the 3D object by drawing its edges on a 2D plane.</div><div class="ttdef"><b>Definition:</b> goblin3d.cpp:185</div></div>
 <div class="ttc" id="astructgoblin3d__obj__t_html"><div class="ttname"><a href="structgoblin3d__obj__t.html">goblin3d_obj_t</a></div><div class="ttdoc">Structure representing a 3D object for rendering using the Goblin3D library.</div><div class="ttdef"><b>Definition:</b> goblin3d.h:72</div></div>
 <div class="ttc" id="astructgoblin3d__obj__t_html_a44dd4b40dad28cec266818db0c451e49"><div class="ttname"><a href="structgoblin3d__obj__t.html#a44dd4b40dad28cec266818db0c451e49">goblin3d_obj_t::z_angle_deg</a></div><div class="ttdeci">float z_angle_deg</div><div class="ttdef"><b>Definition:</b> goblin3d.h:83</div></div>
@@ -236,7 +237,7 @@ Basic Usage</h3>
 <div class="ttc" id="astructgoblin3d__obj__t_html_a73211958e688cffbfac2007390e676ce"><div class="ttname"><a href="structgoblin3d__obj__t.html#a73211958e688cffbfac2007390e676ce">goblin3d_obj_t::x_offset</a></div><div class="ttdeci">float x_offset</div><div class="ttdef"><b>Definition:</b> goblin3d.h:78</div></div>
 <div class="ttc" id="astructgoblin3d__obj__t_html_a984579501435e1bf51d915e0a67ce13f"><div class="ttname"><a href="structgoblin3d__obj__t.html#a984579501435e1bf51d915e0a67ce13f">goblin3d_obj_t::x_angle_deg</a></div><div class="ttdeci">float x_angle_deg</div><div class="ttdef"><b>Definition:</b> goblin3d.h:81</div></div>
 <div class="ttc" id="astructgoblin3d__obj__t_html_ad102db071d1e1ded4dc4b1951443ff57"><div class="ttname"><a href="structgoblin3d__obj__t.html#ad102db071d1e1ded4dc4b1951443ff57">goblin3d_obj_t::y_angle_deg</a></div><div class="ttdeci">float y_angle_deg</div><div class="ttdef"><b>Definition:</b> goblin3d.h:82</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
 Exporting from Blender</h2>
 <p >Follow these steps to export a 3D scene from Blender in a format compatible with Goblin3D:</p>
 <ol type="1">
@@ -251,6 +252,22 @@ Exporting from Blender</h2>
 </li>
 <li><p class="startli"><b>Save the OBJ File</b></p>
 <p class="startli">When saving, you do not need to include the Material File (*.mtl) since Goblin3D only renders the wireframe, and materials are not required for this purpose. Simply save the OBJ file, and it's ready for use with Goblin3D.</p>
+</li>
+</ol>
+<h2><a class="anchor" id="autotoc_md8"></a>
+Use Cases</h2>
+<ol type="1">
+<li><p class="startli"><b>Low-Power Displays</b></p>
+<p class="startli">Goblin3D can be used for rendering 3D wireframe graphics on low-power, monochrome displays (e.g., OLEDs, TFTs) in embedded systems, which often lack the resources for full shading or texture mapping.</p>
+</li>
+<li><p class="startli"><b>Wearable Devices</b></p>
+<p class="startli">It can be integrated into wearable tech with small displays, such as smartwatches, where simple 3D visualizations like fitness progress or notifications might be shown in wireframe.</p>
+</li>
+<li><p class="startli"><b>3D Modeling Previews</b></p>
+<p class="startli">Designers can use Goblin3D to quickly preview 3D models in a wireframe format, providing a sense of object geometry before moving to a more detailed rendering process.</p>
+</li>
+<li><p class="startli"><b>Retro 3D Games</b></p>
+<p class="startli">Goblin3D can be used to develop retro-style 3D games on resource-constrained devices, where wireframe graphics give a nostalgic feel while minimizing resource usage.</p>
 </li>
 </ol>
 <h2><a class="anchor" id="autotoc_md9"></a>
