@@ -33,7 +33,7 @@ MathJax.Hub.Config({
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">Goblin3D
+   <div id="projectname">Goblin3D<span id="projectnumber">&#160;0.0.2</span>
    </div>
    <div id="projectbrief">Graphics engine for rendering 3D wireframe on monochromatic displays and TFT LCDs without any dependency required for Arduino platform.</div>
   </td>
@@ -157,7 +157,7 @@ Functions</h2></td></tr>
 <li>Pre-calculate the 3D coordinates based on rotation angles.</li>
 <li>Render the 3D objects onto a 2D surface.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md0"></a>
+<h2><a class="anchor" id="autotoc_md3"></a>
 Usage Example</h2>
 <div class="fragment"><div class="line"><a class="code hl_struct" href="structgoblin3d__obj__t.html">goblin3d_obj_t</a> cube;</div>
 <div class="line"><a class="code hl_function" href="goblin3d_8h.html#ae24db99a854272ed44f23fa50bbc5fda">goblin3d_init</a>(&amp;cube, 8, 12);</div>
@@ -504,7 +504,7 @@ Usage Example</h2>
 
 <p>Precalculates the rotated and projected points for a 3D object. </p>
 <p >This function applies rotation transformations to the original 3D points and projects them onto a 2D plane. The rotation is applied in the order: X-axis, Y-axis, and Z-axis. The projected points are then scaled and offset based on the object's parameters.</p>
-<h3><a class="anchor" id="autotoc_md10"></a>
+<h3><a class="anchor" id="autotoc_md11"></a>
 Mathematical Representation</h3>
 <p >The rotation matrices for the X, Y, and Z axes are as follows:</p>
 <ul>
