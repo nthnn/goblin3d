@@ -183,8 +183,10 @@ void goblin3d_precalculate(goblin3d_obj_t* obj) {
 }
 
 void goblin3d_render(goblin3d_obj_t* obj, goblin3d_obj_draw_fn draw) {
-    for(uint32_t i = 0; i < obj->edge_count; i++) {
-        uint32_t start = obj->edges[i][0], end = obj->edges[i][1];
+    uint32_t i = 0;
+
+    while(i < obj->edge_count) {
+        uint32_t start = obj->edges[i][0], end = obj->edges[i++][1];
         draw(
             obj->points[start][0],
             obj->points[start][1],
