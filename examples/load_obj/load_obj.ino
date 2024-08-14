@@ -54,7 +54,7 @@ void setup() {
         while(true); // Halt execution if initialization fails
     }
 
-    // Load the /sphere.obj file as Goblin3D object
+    // Load the /monkey.obj file as Goblin3D object
     if(!goblin3d_parse_obj_file("/monkey.obj", &obj)) {
         Serial.begin(115200);                           // Start serial communication for debugging
         Serial.println("Failed to initialize object."); // Print error message if initialization fails
