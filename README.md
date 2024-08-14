@@ -161,6 +161,24 @@ Follow these steps to export a 3D scene from Blender in a format compatible with
 
     When saving, you do not need to include the Material File (*.mtl) since Goblin3D only renders the wireframe, and materials are not required for this purpose. Simply save the OBJ file, and it's ready for use with Goblin3D.
 
+## Use Cases
+
+1. **Low-Power Displays**
+
+    Goblin3D can be used for rendering 3D wireframe graphics on low-power, monochrome displays (e.g., OLEDs, TFTs) in embedded systems, which often lack the resources for full shading or texture mapping.
+
+2. **Wearable Devices**
+
+    It can be integrated into wearable tech with small displays, such as smartwatches, where simple 3D visualizations like fitness progress or notifications might be shown in wireframe.
+
+3. **3D Modeling Previews**
+
+    Designers can use Goblin3D to quickly preview 3D models in a wireframe format, providing a sense of object geometry before moving to a more detailed rendering process.
+
+4. **Retro 3D Games**
+
+    Goblin3D can be used to develop retro-style 3D games on resource-constrained devices, where wireframe graphics give a nostalgic feel while minimizing resource usage.
+
 ## Contribution and Feedback
 
 Contributions and feedback are all welcome to enhance this library. If you encounter any issues, have suggestions for improvements, or would like to contribute code, please do so.
