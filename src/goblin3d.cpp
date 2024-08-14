@@ -23,7 +23,15 @@
 
 #include <goblin3d.h>
 #include <math.h>
-#include <SD.h>
+
+#ifdef ARDUINO
+#   include <SD.h>
+#else
+#   include <stdint.h>
+#   include <stdio.h>
+#   include <stdlib.h>
+#   include <string.h>
+#endif
 
 bool goblin3d_init(goblin3d_obj_t* obj, uint32_t point_count, uint32_t edge_count) {
     size_t fsize = sizeof(float);
@@ -249,6 +257,7 @@ bool goblin3d_add_edge(goblin3d_obj_t* obj, uint32_t v1, uint32_t v2) {
 }
 
 bool goblin3d_parse_obj_file(const char* filename, goblin3d_obj_t* obj) {
+    #ifdef ARDUINO
     File file = SD.open(filename);
     if(!file)
         return false;
@@ -303,4 +312,57 @@ bool goblin3d_parse_obj_file(const char* filename, goblin3d_obj_t* obj) {
 
     file.close();
     return true;
+
+    #else
+
+    FILE* file = fopen(filename, "r");
+    if(!file)
+        return false;
+    goblin3d_init_empty(obj);
+
+    char line[256];
+    while(fgets(line, sizeof(line), file)) {
+        if(strncmp(line, "v ", 2) == 0) {
+            float x, y, z;
+            sscanf(line + 2, "%f %f %f", &x, &y, &z);
+            
+            if(!goblin3d_add_point(obj, x, y, z))
+                return false;
+        }
+        else if(strncmp(line, "f ", 2) == 0) {
+            uint32_t vertex_indices[4];
+            int count = sscanf(
+                line + 2,
+                "%hhu %hhu %hhu %hhu", 
+                &vertex_indices[0], 
+                &vertex_indices[1], 
+                &vertex_indices[2], 
+                &vertex_indices[3]
+            );
+
+            if(count == 3) {
+                if(!goblin3d_add_edge(obj, vertex_indices[0] - 1, vertex_indices[1] - 1) ||
+                    !goblin3d_add_edge(obj, vertex_indices[1] - 1, vertex_indices[2] - 1) ||
+                    !goblin3d_add_edge(obj, vertex_indices[2] - 1, vertex_indices[0] - 1))
+                    return false;
+            }
+            else if(count == 4) {
+                if(!goblin3d_add_edge(obj, vertex_indices[0] - 1, vertex_indices[1] - 1) ||
+                    !goblin3d_add_edge(obj, vertex_indices[1] - 1, vertex_indices[2] - 1) ||
+                    !goblin3d_add_edge(obj, vertex_indices[2] - 1, vertex_indices[3] - 1) ||
+                    !goblin3d_add_edge(obj, vertex_indices[3] - 1, vertex_indices[0] - 1))
+                    return false;
+            }
+        }
+        else if(line[0] == 'm' || line[0] == 'o' ||
+            line[0] == '#' || line[0] == 'g' ||
+            line[0] == 's' || line[0] == 'u' ||
+            line[0] == 'n')
+            continue;
+    }
+
+    fclose(file);
+    return true;
+
+    #endif
 }
