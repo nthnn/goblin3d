@@ -36,9 +36,9 @@ var NAVTREE =
         [ "Basic Usage", "index.html#autotoc_md7", null ]
       ] ],
       [ "Exporting from Blender", "index.html#autotoc_md8", null ],
-      [ "Use Cases", "index.html#autotoc_md9", null ],
-      [ "Contribution and Feedback", "index.html#autotoc_md10", null ],
-      [ "License", "index.html#autotoc_md11", null ],
+      [ "Use Cases", "index.html#autotoc_md10", null ],
+      [ "Contribution and Feedback", "index.html#autotoc_md11", null ],
+      [ "License", "index.html#autotoc_md12", null ],
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
       [ "Class Members", "functions.html", [
