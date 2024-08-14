@@ -5,7 +5,7 @@
 ![Arduino CI](https://github.com/nthnn/goblin3d/actions/workflows/arduino_ci.yml/badge.svg)
 ![Arduino Lint](https://github.com/nthnn/goblin3d/actions/workflows/arduino_lint.yml/badge.svg)
 ![SDL2 Port CI](https://github.com/nthnn/goblin3d/actions/workflows/sdl2_ci.yml/badge.svg)
-![Arduino Release](https://img.shields.io/badge/Library%20Manager-v0.0.1-red?logo=Arduino)
+![Arduino Release](https://img.shields.io/badge/Library%20Manager-v0.0.2-red?logo=Arduino)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/nthnn/goblin3d/blob/main/LICENSE)
 
 **Goblin3D** is a lightweight, dependency-free graphics engine designed for rendering 3D wireframes on monochromatic displays and TFT LCDs using the Arduino platform. Goblin3D is perfect for embedded systems where resources are limited but 3D rendering capabilities are desired.
