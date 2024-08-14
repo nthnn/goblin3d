@@ -95,19 +95,19 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 </div><!--header-->
 <div class="contents">
 <div class="toc"><h3>Table of Contents</h3>
-<ul><ul><li class="level2"><a href="#autotoc_md0">Features</a></li>
-<li class="level2"><a href="#autotoc_md1">Installation</a><ul><li class="level3"><a href="#autotoc_md2">Arduino Library Manager</a></li>
-<li class="level3"><a href="#autotoc_md3">Manual Installation</a></li>
+<ul><ul><li class="level2"><a href="#autotoc_md1">Features</a></li>
+<li class="level2"><a href="#autotoc_md2">Installation</a><ul><li class="level3"><a href="#autotoc_md3">Arduino Library Manager</a></li>
+<li class="level3"><a href="#autotoc_md4">Manual Installation</a></li>
 </ul>
 </li>
-<li class="level2"><a href="#autotoc_md4">Getting Started</a><ul><li class="level3"><a href="#autotoc_md5">Quick Start</a></li>
-<li class="level3"><a href="#autotoc_md6">Basic Usage</a></li>
+<li class="level2"><a href="#autotoc_md5">Getting Started</a><ul><li class="level3"><a href="#autotoc_md6">Quick Start</a></li>
+<li class="level3"><a href="#autotoc_md7">Basic Usage</a></li>
 </ul>
 </li>
-<li class="level2"><a href="#autotoc_md7">Exporting from Blender</a></li>
-<li class="level2"><a href="#autotoc_md8">Use Cases</a></li>
-<li class="level2"><a href="#autotoc_md9">Contribution and Feedback</a></li>
-<li class="level2"><a href="#autotoc_md10">License</a></li>
+<li class="level2"><a href="#autotoc_md8">Exporting from Blender</a></li>
+<li class="level2"><a href="#autotoc_md9">Use Cases</a></li>
+<li class="level2"><a href="#autotoc_md10">Contribution and Feedback</a></li>
+<li class="level2"><a href="#autotoc_md11">License</a></li>
 </ul>
 </ul>
 </div>
@@ -119,7 +119,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <blockquote class="doxtable">
 <p >&zwj;This library is also compatible with desktop environments. You can simply integrate it with SLD2, OpenGL, et cetera. </p>
 </blockquote>
-<h2><a class="anchor" id="autotoc_md0"></a>
+<h2><a class="anchor" id="autotoc_md1"></a>
 Features</h2>
 <ul>
 <li><b>3D Wireframe Rendering</b>: Render basic 3D shapes as wireframes on displays.</li>
@@ -131,9 +131,9 @@ Features</h2>
 </ul>
 <p ><img src="https://raw.githubusercontent.com/nthnn/goblin3d/main/assets/goblin3d_sdl2.png" alt="Goblin3D port with SDL2" class="inline"/> <br  />
  Goblin3D port with SDL2 </p>
-<h2><a class="anchor" id="autotoc_md1"></a>
+<h2><a class="anchor" id="autotoc_md2"></a>
 Installation</h2>
-<h3><a class="anchor" id="autotoc_md2"></a>
+<h3><a class="anchor" id="autotoc_md3"></a>
 Arduino Library Manager</h3>
 <ol type="1">
 <li>Open the Arduino IDE.</li>
@@ -141,7 +141,7 @@ Arduino Library Manager</h3>
 <li>Search for <b>Goblin3D</b>.</li>
 <li>Click <b>Install</b>.</li>
 </ol>
-<h3><a class="anchor" id="autotoc_md3"></a>
+<h3><a class="anchor" id="autotoc_md4"></a>
 Manual Installation</h3>
 <ol type="1">
 <li>Download the latest release from the <a href="https://github.com/nthnn/goblin3d/releases">Releases</a> page.</li>
@@ -149,14 +149,14 @@ Manual Installation</h3>
 <li>Move the <code>Goblin3D</code> folder to your Arduino libraries directory (typically <code>~/Documents/Arduino/libraries/</code> on Windows and Linux, <code>~/Documents/Arduino/libraries/</code> on macOS).</li>
 <li>Restart the Arduino IDE.</li>
 </ol>
-<h2><a class="anchor" id="autotoc_md4"></a>
+<h2><a class="anchor" id="autotoc_md5"></a>
 Getting Started</h2>
-<h3><a class="anchor" id="autotoc_md5"></a>
+<h3><a class="anchor" id="autotoc_md6"></a>
 Quick Start</h3>
 <p >Goblin3D SDL2 port example is availble on Docker to try it out.</p>
 <div class="fragment"><div class="line">docker pull nthnn/goblin3d</div>
 <div class="line">docker run -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix goblin3d</div>
-</div><!-- fragment --><h3><a class="anchor" id="autotoc_md6"></a>
+</div><!-- fragment --><h3><a class="anchor" id="autotoc_md7"></a>
 Basic Usage</h3>
 <p >Here’s a simple example of how to use Goblin3D to load an <code>*.obj</code> file from SD card to TFT ILI9341 display.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;SPI.h&gt;</span>                <span class="comment">// Include the SPI library for SPI communication</span></div>
@@ -237,7 +237,7 @@ Basic Usage</h3>
 <div class="ttc" id="astructgoblin3d__obj__t_html_a73211958e688cffbfac2007390e676ce"><div class="ttname"><a href="structgoblin3d__obj__t.html#a73211958e688cffbfac2007390e676ce">goblin3d_obj_t::x_offset</a></div><div class="ttdeci">float x_offset</div><div class="ttdef"><b>Definition:</b> goblin3d.h:78</div></div>
 <div class="ttc" id="astructgoblin3d__obj__t_html_a984579501435e1bf51d915e0a67ce13f"><div class="ttname"><a href="structgoblin3d__obj__t.html#a984579501435e1bf51d915e0a67ce13f">goblin3d_obj_t::x_angle_deg</a></div><div class="ttdeci">float x_angle_deg</div><div class="ttdef"><b>Definition:</b> goblin3d.h:81</div></div>
 <div class="ttc" id="astructgoblin3d__obj__t_html_ad102db071d1e1ded4dc4b1951443ff57"><div class="ttname"><a href="structgoblin3d__obj__t.html#ad102db071d1e1ded4dc4b1951443ff57">goblin3d_obj_t::y_angle_deg</a></div><div class="ttdeci">float y_angle_deg</div><div class="ttdef"><b>Definition:</b> goblin3d.h:82</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md7"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
 Exporting from Blender</h2>
 <p >Follow these steps to export a 3D scene from Blender in a format compatible with Goblin3D:</p>
 <ol type="1">
@@ -254,7 +254,7 @@ Exporting from Blender</h2>
 <p class="startli">When saving, you do not need to include the Material File (*.mtl) since Goblin3D only renders the wireframe, and materials are not required for this purpose. Simply save the OBJ file, and it's ready for use with Goblin3D.</p>
 </li>
 </ol>
-<h2><a class="anchor" id="autotoc_md8"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 Use Cases</h2>
 <ol type="1">
 <li><p class="startli"><b>Low-Power Displays</b></p>
@@ -270,10 +270,10 @@ Use Cases</h2>
 <p class="startli">Goblin3D can be used to develop retro-style 3D games on resource-constrained devices, where wireframe graphics give a nostalgic feel while minimizing resource usage.</p>
 </li>
 </ol>
-<h2><a class="anchor" id="autotoc_md9"></a>
+<h2><a class="anchor" id="autotoc_md10"></a>
 Contribution and Feedback</h2>
 <p >Contributions and feedback are all welcome to enhance this library. If you encounter any issues, have suggestions for improvements, or would like to contribute code, please do so.</p>
-<h2><a class="anchor" id="autotoc_md10"></a>
+<h2><a class="anchor" id="autotoc_md11"></a>
 License</h2>
 <p >Copyright 2024 - Nathanne Isip</p>
 <p >Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>

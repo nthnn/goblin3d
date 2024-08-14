@@ -26,19 +26,19 @@ var NAVTREE =
 [
   [ "Goblin3D", "index.html", [
     [ "Classes", "annotated.html", [
-      [ "Features", "index.html#autotoc_md0", null ],
-      [ "Installation", "index.html#autotoc_md1", [
-        [ "Arduino Library Manager", "index.html#autotoc_md2", null ],
-        [ "Manual Installation", "index.html#autotoc_md3", null ]
+      [ "Features", "index.html#autotoc_md1", null ],
+      [ "Installation", "index.html#autotoc_md2", [
+        [ "Arduino Library Manager", "index.html#autotoc_md3", null ],
+        [ "Manual Installation", "index.html#autotoc_md4", null ]
       ] ],
-      [ "Getting Started", "index.html#autotoc_md4", [
-        [ "Quick Start", "index.html#autotoc_md5", null ],
-        [ "Basic Usage", "index.html#autotoc_md6", null ]
+      [ "Getting Started", "index.html#autotoc_md5", [
+        [ "Quick Start", "index.html#autotoc_md6", null ],
+        [ "Basic Usage", "index.html#autotoc_md7", null ]
       ] ],
-      [ "Exporting from Blender", "index.html#autotoc_md7", null ],
-      [ "Use Cases", "index.html#autotoc_md8", null ],
-      [ "Contribution and Feedback", "index.html#autotoc_md9", null ],
-      [ "License", "index.html#autotoc_md10", null ],
+      [ "Exporting from Blender", "index.html#autotoc_md8", null ],
+      [ "Use Cases", "index.html#autotoc_md9", null ],
+      [ "Contribution and Feedback", "index.html#autotoc_md10", null ],
+      [ "License", "index.html#autotoc_md11", null ],
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
       [ "Class Members", "functions.html", [
