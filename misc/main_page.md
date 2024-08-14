@@ -1,10 +1,6 @@
 @mainpage Goblin3D
 @tableofcontents
 
-<div align="center">
-    <h1>Goblin3D</h1>
-</div>
-
 ![Arduino CI](https://github.com/nthnn/goblin3d/actions/workflows/arduino_ci.yml/badge.svg)
 ![Arduino Lint](https://github.com/nthnn/goblin3d/actions/workflows/arduino_lint.yml/badge.svg)
 ![SDL2 Port CI](https://github.com/nthnn/goblin3d/actions/workflows/sdl2_ci.yml/badge.svg)
@@ -19,8 +15,7 @@
     Goblin3D demo with ESP32 on TFT and OLED.
 </p>
 
-> [!NOTE]
-> This library is also compatible with desktop environments.
+> This library is also compatible with desktop environments. You can simply integrate it with SLD2, OpenGL, et cetera.
 
 ## Features
 
@@ -29,6 +24,7 @@
 - **No External Dependencies**: Goblin3D is a standalone library that does not require any additional libraries, making it easy to integrate into any Arduino project.
 - **Customizable Objects**: Easily define and manipulate custom 3D objects with your own vertices and edges.
 - **Rotation and Scaling**: Support for rotating and scaling objects in 3D space.
+- **Directly `*.obj` Rendering**: Goblin3D can render `*.obj` files made with Blender directly from SD card.
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/nthnn/goblin3d/main/assets/goblin3d_sdl2.png" alt="Goblin3D port with SDL2"/>
@@ -65,15 +61,22 @@ docker run -it -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix goblin3d
 
 ### Basic Usage
 
-Here’s a simple example of how to use Goblin3D to render a rotating 3D house-shape object on an OLED display:
+Here’s a simple example of how to use Goblin3D to load an `*.obj` file from SD card to TFT ILI9341 display.
 
 ```cpp
-#include <Adafruit_SSD1306.h>   // Include the library for SSD1306 OLED display
-#include <Wire.h>               // Include the Wire library for I2C communication
+#include <SPI.h>                // Include the SPI library for SPI communication
+#include <SD.h>                 // Include the SD card library for loading files
+#include <TFT_eSPI.h>           // Include the TFT_eSPI for display driver
 #include <goblin3d.h>           // Include the Goblin3D library for 3D rendering
 
-Adafruit_SSD1306 display(128, 64, &Wire, -1);   // Initialize the SSD1306 display with 128x64 resolution
-goblin3d_obj_t cube;                            // Declare a 3D object using the Goblin3D structure
+#define SD_CS      2            // SD card chip select pin
+#define SD_SCK     14           // SD card SPI clock pin
+#define SD_MOSI    13           // SD card SPI MOSI pin
+#define SD_MISO    12           // SD card SPI MISO pin
+
+TFT_eSPI tft = TFT_eSPI(320, 240);   // Initialize the TFT display with 320x240 resolution
+SPIClass sdSpi(HSPI);                // SPI instance for SD card
+goblin3d_obj_t obj;                  // Declare a 3D object using the Goblin3D structure
 
 /*
  * This function will be passed to Goblin3D's
@@ -81,33 +84,21 @@ goblin3d_obj_t cube;                            // Declare a 3D object using the
  * points onto the 2D display.
  */
 void drawLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2) {
-    display.drawLine(x1, y1, x2, y2, WHITE);  // Draw a white line between the given coordinates
+    tft.drawLine(x1, y1, x2, y2, TFT_WHITE);  // Draw a white line between the given coordinates
 }
 
 void setup() {
-    // Define the 3D coordinates of the cube's vertices
-    float cube_points[9][3] = {
-        { -1.0,  -1.0,   1.0 },
-        {  1.0,  -1.0,   1.0 },
-        {  1.0,   1.0,   1.0 },
-        { -1.0,   1.0,   1.0 },
-        { -1.0,  -1.0,  -1.0 },
-        {  1.0,  -1.0,  -1.0 },
-        {  1.0,   1.0,  -1.0 },
-        { -1.0,   1.0,  -1.0 },
-        {  0.0,   3.0,   0.0 }
-    };
+    // Initialize SD card
+    sdSpi.begin(SD_SCK, SD_MISO, SD_MOSI, SD_CS);
+    if(!SD.begin(SD_CS, sdSpi, 80000000)) {
+        Serial.begin(115200);                           // Start serial communication for debugging
+        Serial.println("Card mount failed.");           // Print error message if initialization fails
 
-    // Define the edges of the cube, connecting pairs of vertices
-    uint8_t cube_edges[16][2] = {
-        {0, 1}, {1, 2}, {2, 3}, {3, 0},  // Base edges
-        {4, 5}, {5, 6}, {6, 7}, {7, 4},  // Top edges
-        {0, 4}, {1, 5}, {2, 6}, {3, 7},  // Vertical edges
-        {2, 8}, {3, 8}, {6, 8}, {7, 8}   // Pyramid edges
-    };
+        while(true); // Halt execution if initialization fails
+    }
 
-    // Initialize the Goblin3D object (cube) with 9 points and 16 edges
-    if(!goblin3d_init(&cube, 9, 16)) {
+    // Load the /monkey.obj file as Goblin3D object
+    if(!goblin3d_parse_obj_file("/monkey.obj", &obj)) {
         Serial.begin(115200);                           // Start serial communication for debugging
         Serial.println("Failed to initialize object."); // Print error message if initialization fails
 
@@ -115,41 +106,58 @@ void setup() {
     }
 
     // Set the scaling factor for the 3D object
-    cube.scale_size = 30.0;
-    // Set the initial rotation angle around the X-axis
-    cube.x_angle_deg = 20.0;
+    obj.scale_size = 230.0;
     // Set the initial X and Y offset to center the object on the display
-    cube.x_offset = 64;
-    cube.y_offset = 32;
+    obj.x_offset = 160;
+    obj.y_offset = 120;
 
-    // Copy the predefined cube points to the Goblin3D object's original points array
-    for(uint8_t i = 0; i < 9; i++)
-        for(uint8_t j = 0; j < 3; j++)
-            cube.orig_points[i][j] = cube_points[i][j];
-
-    // Copy the predefined cube edges to the Goblin3D object's edges array
-    for(uint8_t i = 0; i < 16; i++)
-        for(uint8_t j = 0; j < 2; j++)
-            cube.edges[i][j] = cube_edges[i][j];
-
-    // Initialize the OLED display with I2C address 0x3C
-    display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+    // Initialize the TFT display with black background color
+    tft.init();
+    tft.fillScreen(ILI9341_BLACK);
 }
 
 void loop() {
     // Continuously update the rotation angles for a rotating effect
-    cube.x_angle_deg = fmod(cube.x_angle_deg + 1.0, 360.0);  // Increment X rotation
-    cube.y_angle_deg = fmod(cube.y_angle_deg + 1.0, 360.0);  // Increment Y rotation
-    cube.z_angle_deg = fmod(cube.z_angle_deg + 1.0, 360.0);  // Increment Z rotation
+    obj.x_angle_deg = fmod(obj.x_angle_deg + 1.0, 360.0);  // Increment X rotation
+    obj.y_angle_deg = fmod(obj.y_angle_deg + 1.0, 360.0);  // Increment Y rotation
+    obj.z_angle_deg = fmod(obj.z_angle_deg + 1.0, 360.0);  // Increment Z rotation
 
-    display.clearDisplay();             // Clear the display before drawing the new frame
+    goblin3d_precalculate(&obj);       // Perform rendition pre-calculations
 
-    goblin3d_precalculate(&cube);       // Recalculate the 3D coordinates based on the current rotation angles
-    goblin3d_render(&cube, &drawLine);  // Render the cube by drawing the edges on the display
+    tft.startWrite();                   // Start the rendition SPI transaction
+    tft.fillScreen(ILI9341_BLACK);      // Clear the display before drawing the new frame
+    goblin3d_render(&obj, &drawLine);  // Render the object on the TFT display
+    tft.endWrite();                     // End the SPI transaction
 
-    display.display();                  // Update the display with the newly drawn frame
+    delay(10);                          // Sleep after ending the transaction
 }
 ```
+
+## Exporting from Blender
+
+Follow these steps to export a 3D scene from Blender in a format compatible with Goblin3D:
+
+1. **Open the Export Menu**
+
+    In Blender, navigate to the top menu bar and select `File > Export > Wavefront (.obj)`. This will allow you to export your 3D scene in the OBJ format, which Goblin3D can read and render as a wireframe.
+
+    <p align="center">
+        <img alt="Exporting to Blender 1" src="https://raw.githubusercontent.com/nthnn/goblin3d/main/assets/screenshot_1.png" />
+    </p>
+
+2. **Configure the Export Settings**
+
+    Before saving the file, ensure that the `Vertex Groups` option is selected. This will export the vertex information needed for wireframe rendering.
+
+    Optionally, you can check the `Triangulate Faces` option to convert all faces into triangles, which is commonly used in wireframe rendering to ensure consistent results across different models.
+
+    <p align="center">
+        <img alt="Exporting to Blender 1" src="https://raw.githubusercontent.com/nthnn/goblin3d/main/assets/screenshot_2.png" />
+    </p>
+
+3. **Save the OBJ File**
+
+    When saving, you do not need to include the Material File (*.mtl) since Goblin3D only renders the wireframe, and materials are not required for this purpose. Simply save the OBJ file, and it's ready for use with Goblin3D.
 
 ## Contribution and Feedback
 
