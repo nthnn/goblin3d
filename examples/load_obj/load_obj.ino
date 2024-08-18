@@ -32,8 +32,13 @@
 #define SD_MISO    12           // SD card SPI MISO pin
 
 TFT_eSPI tft = TFT_eSPI(320, 240);   // Initialize the TFT display with 320x240 resolution
+TFT_eSprite img = TFT_eSprite(&tft); // Sprite to be used as frame buffer
+
 SPIClass sdSpi(HSPI);                // SPI instance for SD card
 goblin3d_obj_t obj;                  // Declare a 3D object using the Goblin3D structure
+
+unsigned long previousMillis = 0;    // Store the previous time to calculate FPS
+float fps = 0.0;                     // Variable to hold the FPS value
 
 /*
  * This function will be passed to Goblin3D's
@@ -41,7 +46,7 @@ goblin3d_obj_t obj;                  // Declare a 3D object using the Goblin3D s
  * points onto the 2D display.
  */
 void drawLine(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2) {
-    tft.drawLine(x1, y1, x2, y2, TFT_WHITE);  // Draw a white line between the given coordinates
+    img.drawLine(x1, y1, x2, y2, TFT_WHITE);  // Draw a white line between the given coordinates
 }
 
 void setup() {
@@ -65,26 +70,50 @@ void setup() {
     // Set the scaling factor for the 3D object
     obj.scale_size = 230.0;
     // Set the initial X and Y offset to center the object on the display
-    obj.x_offset = 160;
+    obj.x_offset = 120;
     obj.y_offset = 120;
 
     // Initialize the TFT display with black background color
     tft.init();
     tft.fillScreen(ILI9341_BLACK);
+
+    // Initialize the sprite image
+    img.createSprite(320, 240);
 }
 
 void loop() {
+    unsigned long currentMillis = millis();  // Get the current time in milliseconds
+
+    // Calculate the time difference for this frame
+    unsigned long deltaMillis = currentMillis - previousMillis;
+    previousMillis = currentMillis;
+
+    // Calculate FPS as the inverse of frame time (in seconds)
+    if(deltaMillis > 0)
+        fps = 1000.0 / deltaMillis;
+
     // Continuously update the rotation angles for a rotating effect
     obj.x_angle_deg = fmod(obj.x_angle_deg + 1.0, 360.0);  // Increment X rotation
     obj.y_angle_deg = fmod(obj.y_angle_deg + 1.0, 360.0);  // Increment Y rotation
     obj.z_angle_deg = fmod(obj.z_angle_deg + 1.0, 360.0);  // Increment Z rotation
 
-    goblin3d_precalculate(&obj);       // Perform rendition pre-calculations
+    goblin3d_precalculate(&obj);                      // Perform rendition pre-calculations
 
-    tft.startWrite();                   // Start the rendition SPI transaction
-    tft.fillScreen(ILI9341_BLACK);      // Clear the display before drawing the new frame
-    goblin3d_render(&obj, &drawLine);  // Render the object on the TFT display
-    tft.endWrite();                     // End the SPI transaction
+    img.fillScreen(TFT_BLACK);                        // Clear the sprite buffer
+    goblin3d_render(&obj, &drawLine);                 // Render the object on the TFT display
 
-    delay(10);                          // Sleep after ending the transaction
+    // Display the FPS on the top left of the screen
+    img.setTextColor(TFT_GREEN);                      // Set text color to white with a black background
+    img.setTextSize(2);                               // Set text size to 2
+
+    // Calculate text width (each character is 12 pixels wide at text size 2)
+    char buffer[10];
+    int textWidth = img.textWidth("FPS: 00.00", 2);   // Example text width at size 2
+
+    // Set cursor to bottom center
+    img.setCursor(((320 - textWidth) / 2) - 40, 218); // X position centered, Y position near the bottom
+    img.printf("FPS: %.2f", fps);                     // Print FPS to the screen
+
+    // Push the sprite to the TFT display
+    img.pushSprite(40, 0);
 }
